@@ -1,4 +1,4 @@
-![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Table_hiragana.svg/768px-Table_hiragana.svg.png "Hiragana")
+![alt text](http://i.imgur.com/rFEs2jM.png "Hiragana")
 # Hiragana-Identifier
 Machine Learning project to identify Japanese characters (hiragana) from a data set. 
 

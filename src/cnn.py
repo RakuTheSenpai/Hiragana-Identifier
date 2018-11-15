@@ -1,5 +1,5 @@
 import numpy as np
-from loadData import loadHiragana2
+from loadData import loadDataset
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Flatten
@@ -27,7 +27,7 @@ def plots(x, y, title, xlabel, ylabel, color = 'r'):
 def baseline_model():
 	# create model
 	model = Sequential()
-	model.add(Conv2D(50, (5, 5), input_shape=(1, 84, 83), activation='relu'))
+	model.add(Conv2D(50, (5, 5), input_shape=(1, 84, 83), data_format='channels_first', activation='relu'))
 	model.add(MaxPooling2D(pool_size=(2, 2)))
 	model.add(Flatten())
 	model.add(Dense(128, activation='relu'))
@@ -37,10 +37,18 @@ def baseline_model():
 	return model
 
 
-X, Y = loadHiragana2()
+DATASET = "Hiragana73"
+# DATASET = "HiraganaGit"
+
+#SWITCH THE LINES BELOW IF YOU NEED TO LOAD ALL THE DATA FROM THE DATASET AGAIN
+X, Y, imgPaths = loadDataset(DATASET, loadAgain=True)
+# X, Y, imgPaths = loadDataset(DATASET, loadAgain=False)
+
 X /= 255
 
-indices = np.arange(len(X))
+#X has format (height, width, N)
+
+indices = np.arange(X.shape[0])
 np.random.seed(3)
 np.random.shuffle(indices)
 X = X[indices]
@@ -84,10 +92,10 @@ epochs = range(1,num_epochs+1)
 
 model = baseline_model()
 metrics = model.fit(x_train, y_train, validation_data = (x_test, y_test), epochs=num_epochs, batch_size=10) #returns val_loss, val_acc, loss, acc
-train_error = metrics.history['acc']
+# train_error = metrics.history['acc']
 
-train_error = np.ones(epochs)-train_error
-plots(epochs, train_error, "Error de entrenamiento", "Epoch", "Error")
+# train_error = np.ones(epochs)-train_error
+# plots(epochs, train_error, "Error de entrenamiento", "Epoch", "Error")
 
 
 # scores = model.evaluate(x_test, y_test)

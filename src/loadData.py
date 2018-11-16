@@ -5,7 +5,7 @@ from PIL import ImageOps
 from PIL import Image
 
 PATH = os.getcwd()
-
+#loads dataset from path, gets file name and converts to bit array
 def loadDataset(dataset, loadAgain = False):
     if(loadAgain):
         dataPath = "%s/../dataSets/%s"%(PATH,dataset)

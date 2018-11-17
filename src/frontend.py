@@ -37,6 +37,12 @@ class GUI:
             self.act.config(text=actual[i])
             self.pred.config(text=predicted[i])
             imgage =ImageTk.PhotoImage(Image.open(paths[i]))
+            if predicted[i]==actual[i]:
+                self.predplace.config(foreground="green")
+                self.pred.config(foreground="green")
+            else:
+                self.predplace.config(foreground="red")
+                self.pred.config(foreground="red")
             self.img.config(image = imgage)
             self.img.image = imgage
             time.sleep(2)

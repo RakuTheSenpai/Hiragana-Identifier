@@ -1,6 +1,6 @@
 import numpy as np
 import random 
-
+#Function divides into subset for cross validation
 def subSetMaker(x_train,y_train,k):
     size = x_train.size
     indexes = np.arange(size)

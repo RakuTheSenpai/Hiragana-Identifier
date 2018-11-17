@@ -6,6 +6,7 @@ from keras.layers import Flatten
 from keras.layers.convolutional import Conv2D
 from keras.layers.convolutional import MaxPooling2D
 from keras.utils import np_utils
+from frontend import createGUI
 
 #DON'T TOUCH, I DON'T KNOW WHAT IT DOES##
 from keras import backend as K         ##
@@ -37,12 +38,12 @@ def baseline_model():
 	return model
 
 
-DATASET = "Hiragana73"
-# DATASET = "HiraganaGit"
+# DATASET = "Hiragana73"
+DATASET = "HiraganaGit"
 
 #SWITCH THE LINES BELOW IF YOU NEED TO LOAD ALL THE DATA FROM THE DATASET AGAIN
-X, Y, imgPaths = loadDataset(DATASET, loadAgain=True)
-# X, Y, imgPaths = loadDataset(DATASET, loadAgain=False)
+# X, Y, imgPaths = loadDataset(DATASET, loadAgain=True)
+X, Y, imgPaths = loadDataset(DATASET, loadAgain=False)
 
 X /= 255
 
@@ -53,17 +54,23 @@ np.random.seed(3)
 np.random.shuffle(indices)
 X = X[indices]
 Y = Y[indices]
+imgPaths = imgPaths[indices]
 
 N = X.shape[0]
 
-Ntrain = int(N*80/100)
-Ntest = int(N*20/100)
+TRAIN_RATIO = 80
+
+Ntrain = int(N*TRAIN_RATIO/100)
+Ntest = int(N*(100-TRAIN_RATIO)/100)
 
 x_train = X[:Ntrain].reshape((Ntrain, 1, 84, 83))
 y_train = Y[:Ntrain]
+paths_train = imgPaths[:Ntrain]
 
 x_test = X[Ntrain:Ntrain+Ntest].reshape((Ntest, 1, 84, 83))
 y_test = Y[Ntrain:Ntrain+Ntest]
+paths_test = imgPaths[Ntrain:Ntrain+Ntest]
+orig_y_test = np.copy(y_test)
 
 #CONVERT CLASSES TO NUMBERS
 
@@ -73,12 +80,14 @@ counter = 0
 for i in range(len(y_train)):
     if(y_train[i] not in labelToNumber):
         labelToNumber[y_train[i]] = counter
+        numberToLabel[counter] = y_train[i]
         counter += 1
     y_train[i] = labelToNumber[y_train[i]]
 
 for i in range(len(y_test)):
     if(y_test[i] not in labelToNumber):
         labelToNumber[y_test[i]] = counter
+        numberToLabel[counter]=y_test[i]
         counter += 1
     y_test[i] = labelToNumber[y_test[i]]
 
@@ -87,13 +96,16 @@ y_test = np_utils.to_categorical(y_test)
 
 #NUMBER OF CLASSES
 num_classes = y_train.shape[1]
-num_epochs = 10
+num_epochs = 5
 epochs = range(1,num_epochs+1)
 
 model = baseline_model()
 metrics = model.fit(x_train, y_train, validation_data = (x_test, y_test), epochs=num_epochs, batch_size=10) #returns val_loss, val_acc, loss, acc
-# train_error = metrics.history['acc']
+y_pred = model.predict_classes(x_test)
+y_pred = [numberToLabel[char] for char in y_pred]
+createGUI(orig_y_test, y_pred, paths_test)
 
+# train_error = metrics.history['acc']
 # train_error = np.ones(epochs)-train_error
 # plots(epochs, train_error, "Error de entrenamiento", "Epoch", "Error")
 

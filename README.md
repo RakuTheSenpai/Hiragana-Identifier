@@ -2,7 +2,7 @@
 # Hiragana-Identifier
 Machine Learning project to identify Japanese characters (hiragana) from a data set. 
 ## Introduction
- Image recognition is very important in the evolution of artificial intelligence. Specifically, finding an efficient model for reading handwritten characters is an ongoing research for very different alphabets, whose symbols vary drastically. In this poster the problem of reading Japanese characters (hiragana) will be solved using Convolutional Neural Networks (CNN). The data set used was taken from a Github repository, which contained 50 different characters and 20 different samples for each one. While sample size is small, a considerable level of certainty can be obtained utilizing a good learning model. 
+ Image recognition is crucial in the evolution of artificial intelligence. Specifically, finding an efficient model for reading handwritten characters is an ongoing research for very different alphabets, whose symbols vary drastically. In this poster the problem of reading Japanese characters (hiragana) will be solved using Convolutional Neural Networks (CNN). The data set used was taken from a Github repository, which contained 50 different characters and 20 different samples for each one. While sample size is small, a considerable level of certainty can be obtained utilizing a good learning model. 
  ## Objective
  The objective of this project is to demonstrate that despite utilizing a small sample as training data, its possible to create a learning model utilizing convolutional neural networks to classify 50 different Japanese hiragana characters. The following algorithm is proposed in order to solve the problem:
  

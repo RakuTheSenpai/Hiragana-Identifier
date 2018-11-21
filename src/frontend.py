@@ -41,13 +41,9 @@ class GUI:
             self.img.image = imgage
             time.sleep(2)
             self.master.update_idletasks()
+
 def createGUI(actual, predicted, paths):
     root = Tk()
     my_gui = GUI(root)
     my_gui.updateResults(actual,predicted,paths)
     root.mainloop()
-
-#### TEST ####
-#actual = ['HA','HO']
-#paths = ["A2.png","A1.png"]
-#createGUI(actual, actual, paths)

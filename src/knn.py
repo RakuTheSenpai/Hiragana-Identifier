@@ -1,4 +1,4 @@
-from loadData import loadHiragana2
+from loadData import loadDataset
 from collections import Counter
 import numpy as np 
 
@@ -25,10 +25,10 @@ def knn(x_train, y_train, x_test, y_test):
 
 K = 3  
 
-X, Y = loadHiragana2()
+X, Y, imgPaths = loadDataset("HiraganaGit", loadAgain = False)
 
 indices = np.arange(len(X))
-np.random.seed(3)
+# np.random.seed(3)
 np.random.shuffle(indices)
 X = X[indices]
 Y = Y[indices]

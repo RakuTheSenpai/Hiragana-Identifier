@@ -9,6 +9,29 @@ Machine Learning project to identify Japanese characters (hiragana) from a data 
  ![Flowchart](https://github.com/RakuTheSenpai/Hiragana-Identifier/blob/master/img/flowchart.png "Flowchart")
 
  ## Methodology
+<<<<<<< HEAD
+=======
+
+Our convolutional neural network consists of: 
+
+- A convolutional layer with 50 kernels of size 5x5 with activation function ReLU
+- A maxpooling layer in order to reduce computational workload.
+- A fully connected layer consisting of 128 nodes with activation function ReLU.
+- A fully connected output layer with 50 nodes and activation function softmax.
+
+![CNN](https://github.com/RakuTheSenpai/Hiragana-Identifier/blob/master/img/model.png "CNN")
+
+## Results
+
+An accuracy of around 85% was obtained by training the model through the CNN with five iterations (epochs) without further improvement. There were 200 samples in the test data.
+![results](https://github.com/RakuTheSenpai/Hiragana-Identifier/blob/master/img/results.png "Results")
+
+## Conclusions
+From the results obtained by this model (85% accuracy) it has been partially proved that it is not necessary to have a data set of great magnitude to get exceptional classification results through convolutional neural networks. Furthermore, the advantage of having a very small sample is that applications based on this model will have a short running time. On the other side, there is still a lot of room for improvement, given that the model has not been tested on other data sets or by using re-sampling methods such as bootstrap or cross-validation.
+
+Data set available at: [Hiragana73](https://lab.ndl.go.jp/cms/hiragana73?fbclid=IwAR2isHvlc2sxjzytRbHRXDaNQM__sevaA9azydGpcrUqlgXdK8LcMpXi13E) and 
+[HiraganaGit](https://github.com/inoueMashuu/hiragana-dataset)
+>>>>>>> 5dfb12da2bb2a06d457c983ee0ff6ede9ca07d8d
 
 Our convolutional neural network consists of: 
 

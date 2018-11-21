@@ -7,6 +7,7 @@ from keras.layers.convolutional import Conv2D
 from keras.layers.convolutional import MaxPooling2D
 from keras.utils import np_utils
 from frontend import createGUI
+import os
 
 #DON'T TOUCH, I DON'T KNOW WHAT IT DOES##
 from keras import backend as K         ##
@@ -17,13 +18,7 @@ import matplotlib.pyplot as plt
 
 from subSetMaker import subSetMaker
 
-def plots(x, y, title, xlabel, ylabel, color = 'r'):
-	y = y.reshape((len(x),))
-	plt.plot(x,y, color=color)
-	plt.xlabel(xlabel)
-	plt.ylabel(ylabel)
-	plt.title(title)
-	plt.show()
+PATH = os.getcwd()
 
 def baseline_model():
 	# create model
@@ -42,8 +37,8 @@ def baseline_model():
 DATASET = "HiraganaGit"
 
 #SWITCH THE LINES BELOW IF YOU NEED TO LOAD ALL THE DATA FROM THE DATASET AGAIN
-# X, Y, imgPaths = loadDataset(DATASET, loadAgain=True)
-X, Y, imgPaths = loadDataset(DATASET, loadAgain=False)
+X, Y, imgPaths = loadDataset(DATASET, loadAgain=True)
+# X, Y, imgPaths = loadDataset(DATASET, loadAgain=False)
 
 X /= 255
 
@@ -96,19 +91,21 @@ y_test = np_utils.to_categorical(y_test)
 
 #NUMBER OF CLASSES
 num_classes = y_train.shape[1]
-num_epochs = 5
+num_epochs = 1
 epochs = range(1,num_epochs+1)
 
 model = baseline_model()
-metrics = model.fit(x_train, y_train, validation_data = (x_test, y_test), epochs=num_epochs, batch_size=10) #returns val_loss, val_acc, loss, acc
-y_pred = model.predict_classes(x_test)
-y_pred = [numberToLabel[char] for char in y_pred]
-createGUI(orig_y_test, y_pred, paths_test)
-
-# train_error = metrics.history['acc']
-# train_error = np.ones(epochs)-train_error
-# plots(epochs, train_error, "Error de entrenamiento", "Epoch", "Error")
+# metrics = model.fit(x_train, y_train, validation_data = (x_test, y_test), epochs=num_epochs, batch_size=10) #returns val_loss, val_acc, loss, acc
+# y_pred = model.predict_classes(x_test)
+# y_pred = [numberToLabel[char] for char in y_pred]
+# createGUI(orig_y_test, y_pred, paths_test)
 
 
-# scores = model.evaluate(x_test, y_test)
-# print("CNN Error: %.2f%%" % (100-scores[1]*100))
+modelJSON = model.to_json()
+# serialize model to JSON
+model_json = model.to_json()
+with open(PATH+"/../models/model.json", "w") as json_file:
+    json_file.write(model_json)
+# serialize weights to HDF5
+model.save_weights(PATH+"/../models/model.h5")
+print("Saved model to disk")

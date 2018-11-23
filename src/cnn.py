@@ -39,8 +39,8 @@ def baseline_model():
 DATASET = "HiraganaGit"
 
 #SWITCH THE LINES BELOW IF YOU NEED TO LOAD ALL THE DATA FROM THE DATASET AGAIN
-# X, Y, imgPaths = loadDataset(DATASET, loadAgain=True)
-X, Y, imgPaths = loadDataset(DATASET, loadAgain=False)
+X, Y, imgPaths = loadDataset(DATASET, loadAgain=True)
+#X, Y, imgPaths = loadDataset(DATASET, loadAgain=False)
 
 X /= 255
 

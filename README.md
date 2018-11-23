@@ -9,8 +9,6 @@ Machine Learning project to identify Japanese characters (hiragana) from a data 
  ![Flowchart](https://github.com/RakuTheSenpai/Hiragana-Identifier/blob/master/img/flowchart.png "Flowchart")
 
  ## Methodology
-<<<<<<< HEAD
-=======
 
 Our convolutional neural network consists of: 
 
@@ -31,7 +29,6 @@ From the results obtained by this model (85% accuracy) it has been partially pro
 
 Data set available at: [Hiragana73](https://lab.ndl.go.jp/cms/hiragana73?fbclid=IwAR2isHvlc2sxjzytRbHRXDaNQM__sevaA9azydGpcrUqlgXdK8LcMpXi13E) and 
 [HiraganaGit](https://github.com/inoueMashuu/hiragana-dataset)
->>>>>>> 5dfb12da2bb2a06d457c983ee0ff6ede9ca07d8d
 
 Our convolutional neural network consists of: 
 

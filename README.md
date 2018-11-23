@@ -21,8 +21,8 @@ Our convolutional neural network consists of:
 
 ## Results
 
-An accuracy of around 85% was obtained by training the model through the CNN with five iterations (epochs) without further improvement. There were 200 samples in the test data.
-![results](https://github.com/RakuTheSenpai/Hiragana-Identifier/blob/master/img/results.png "Results")
+An accuracy of around 88% was obtained by training the model through the CNN with five iterations (epochs) without further improvement. There were 200 samples in the test data.
+![results](https://github.com/RakuTheSenpai/Hiragana-Identifier/blob/master/img/realResults.png "Results")
 
 ## Conclusions
 From the results obtained by this model (85% accuracy) it has been partially proved that it is not necessary to have a data set of great magnitude to get exceptional classification results through convolutional neural networks. Furthermore, the advantage of having a very small sample is that applications based on this model will have a short running time. On the other side, there is still a lot of room for improvement, given that the model has not been tested on other data sets or by using re-sampling methods such as bootstrap or cross-validation.
@@ -39,10 +39,6 @@ Our convolutional neural network consists of:
 
 ![CNN](https://github.com/RakuTheSenpai/Hiragana-Identifier/blob/master/img/model.png "CNN")
 
-## Results
-
-An accuracy of around 88% was obtained by training the model through the CNN with five iterations (epochs) without further improvement. There were 200 samples in the test data.
-![results](https://github.com/RakuTheSenpai/Hiragana-Identifier/blob/master/img/realResults.png "Results")
 
 ## Conclusions
 From the results obtained by this model (85% accuracy) it has been partially proved that it is not necessary to have a data set of great magnitude to get exceptional classification results through convolutional neural networks. Furthermore, the advantage of having a very small sample is that applications based on this model will have a short running time. On the other side, there is still a lot of room for improvement, given that the model has not been tested on other data sets or by using re-sampling methods such as bootstrap or cross-validation.

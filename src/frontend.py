@@ -80,7 +80,3 @@ def createGUI(actual, predicted, paths):
     my_gui.paths = paths
     my_gui.updateResults(0)
     root.mainloop()
-
-#actual = ["ha","ho","he"]
-#paths = ["placeholder.png","placeholder.png","placeholder.png"]
-#createGUI(actual,actual , paths);

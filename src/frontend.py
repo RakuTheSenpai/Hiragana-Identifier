@@ -11,6 +11,13 @@ class GUI:
     predicted = []
     paths = []
 
+    __instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if GUI.__instance is None:
+            GUI.__instance = object.__new__(cls)
+        return GUI.__instance
+
     def __init__(self, master):
         self.master = master
         master.title("Hiragana Identifier")
